@@ -1,0 +1,10 @@
+services:
+  alertbot:
+    container_name: alertbot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - LOG_LEVEL=INFO
+    ports:
+      - "8000:8000"
