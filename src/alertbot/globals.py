@@ -1,0 +1,2 @@
+configs = {}
+splunk_configs = {}

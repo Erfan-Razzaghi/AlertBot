@@ -1,0 +1,51 @@
+{
+    "receiver": "warning", 
+    "status": "firing", 
+    "alerts": [
+        {
+            "status": "firing", 
+            "labels": {
+                "alertname": "KubeContainerWaiting", 
+                "cluster": "stage-sre", 
+                "container": "postgresql", 
+                "namespace": "test-unleash", 
+                "pod": "unleash-postgresql-0", 
+                "prometheus": "monitoring/monitoring-kube-prometheus-prometheus", 
+                "severity": "warning"
+            }, 
+            "annotations": {
+                "description": "pod/unleash-postgresql-0 in namespace test-unleash on container postgresql has been in waiting state for longer than 1 hour.", 
+                "runbook_url": "https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontainerwaiting", 
+                "summary": "Pod container waiting longer than 1 hour"
+            }, 
+            "startsAt": "2025-02-23T05:08:50.371Z", 
+            "endsAt": "0001-01-01T00:00:00Z", 
+            "generatorURL": "https://stage-monitoring-sre.company.app/graph?g0.expr=sum+by+%28namespace%2C+pod%2C+container%2C+cluster%29+%28kube_pod_container_status_waiting_reason%7Bjob%3D%22kube-state-metrics%22%2Cnamespace%3D~%22.%2A%22%7D%29+%3E+0&g0.tab=1", 
+            "fingerprint": "572de020a2ee8cb2"
+        }
+    ], 
+    "groupLabels": 
+    {
+        "alertname": "KubeContainerWaiting"
+    }, 
+    "commonLabels": 
+    {
+        "alertname": "KubeContainerWaiting", 
+        "cluster": "stage-sre", 
+        "container": "postgresql", 
+        "namespace": "test-unleash", 
+        "pod": "unleash-postgresql-0", 
+        "prometheus": "monitoring/monitoring-kube-prometheus-prometheus", 
+        "severity": "warning"
+    }, 
+    "commonAnnotations": 
+    {
+        "description": "pod/unleash-postgresql-0 in namespace test-unleash on container postgresql has been in waiting state for longer than 1 hour.", 
+        "runbook_url": "https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontainerwaiting", 
+        "summary": "Pod container waiting longer than 1 hour"
+    },
+     "externalURL": "http://stage-alert-sre.company.app", 
+     "version": "4", 
+     "groupKey": "{}/{severity='warning'}:{alertname='KubeContainerWaiting'}", 
+     "truncatedAlerts": 0
+}

@@ -1,0 +1,63 @@
+{
+    "receiver": "critical", 
+    "status": "resolved", 
+    "alerts": [
+        {
+            "status": "resolved", 
+            "labels": 
+            {
+                "alertname": "KubePersistentVolumeFillingUp", 
+                "cluster": "stage-sre", 
+                "endpoint": "https-metrics", 
+                "instance": "172.23.34.12:10250", 
+                "job": "kubelet", 
+                "metrics_path": "/metrics", 
+                "namespace": "apache-nifi", 
+                "node": "fksrestgw02", 
+                "persistentvolumeclaim": "logs-apache-nifi-0", 
+                "prometheus": "monitoring/monitoring-kube-prometheus-prometheus", 
+                "service": "monitoring-kube-prometheus-kubelet", 
+                "severity": "critical"
+            }, 
+            "annotations": 
+            {
+                "description": "The PersistentVolume claimed by logs-apache-nifi-0 in Namespace apache-nifi  is only 1.208% free.", 
+                "runbook_url": "https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubepersistentvolumefillingup", 
+                "summary": "PersistentVolume is filling up."
+            }, 
+            "startsAt": "2025-02-23T05:27:17.079Z", 
+            "endsAt": "2025-02-23T06:00:47.079Z", 
+            "generatorURL": "https://stage-monitoring-sre.company.app/graph?g0.expr=%28kubelet_volume_stats_available_bytes%7Bjob%3D%22kubelet%22%2Cmetrics_path%3D%22%2Fmetrics%22%2Cnamespace%3D~%22.%2A%22%7D+%2F+kubelet_volume_stats_capacity_bytes%7Bjob%3D%22kubelet%22%2Cmetrics_path%3D%22%2Fmetrics%22%2Cnamespace%3D~%22.%2A%22%7D%29+%3C+0.03+and+kubelet_volume_stats_used_bytes%7Bjob%3D%22kubelet%22%2Cmetrics_path%3D%22%2Fmetrics%22%2Cnamespace%3D~%22.%2A%22%7D+%3E+0+unless+on+%28cluster%2C+namespace%2C+persistentvolumeclaim%29+kube_persistentvolumeclaim_access_mode%7Baccess_mode%3D%22ReadOnlyMany%22%7D+%3D%3D+1+unless+on+%28cluster%2C+namespace%2C+persistentvolumeclaim%29+kube_persistentvolumeclaim_labels%7Blabel_excluded_from_alerts%3D%22true%22%7D+%3D%3D+1&g0.tab=1", 
+            "fingerprint": "a543a6a65661bf46"
+            }
+        ], 
+        "groupLabels": 
+        {
+            "alertname": "KubePersistentVolumeFillingUp"
+        }, 
+        "commonLabels": 
+        {
+            "alertname": "KubePersistentVolumeFillingUp", 
+            "cluster": "stage-sre", 
+            "endpoint": "https-metrics", 
+            "instance": "172.23.34.12:10250", 
+            "job": "kubelet", 
+            "metrics_path": "/metrics", 
+            "namespace": "apache-nifi", 
+            "node": "fksrestgw02", 
+            "persistentvolumeclaim": "logs-apache-nifi-0", 
+            "prometheus": "monitoring/monitoring-kube-prometheus-prometheus", 
+            "service": "monitoring-kube-prometheus-kubelet", 
+            "severity": "critical"
+        }, 
+        "commonAnnotations": 
+        {
+            "description": "The PersistentVolume claimed by logs-apache-nifi-0 in Namespace apache-nifi  is only 1.208% free.", 
+            "runbook_url": "https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubepersistentvolumefillingup", 
+            "summary": "PersistentVolume is filling up."
+        }, 
+        "externalURL": "http://stage-alert-sre.company.app", 
+        "version": "4", 
+        "groupKey": "{}/{severity='critical'}:{alertname='KubePersistentVolumeFillingUp'}", 
+        "truncatedAlerts": 0
+}

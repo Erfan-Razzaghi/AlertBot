@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alert Flow Diagram</title>
+  <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      flowchart: { 
+        nodeSpacing: 80, 
+        rankSpacing: 80,
+        curve: 'basis'
+      }
+    });
+  </script>
+  <style>
+    /* Optional: center the diagram on the page */
+    body { display: flex; justify-content: center; align-items: flex-start; padding: 40px; }
+    
+    /* Light green background for edge labels */
+    .edgeLabel {
+      background: #E8F5E8 !important;
+      fill: #E8F5E8 !important;
+    }
+    
+    /* Light green background for edge label rectangles */
+    .edgeLabel rect {
+      fill: #E8F5E8 !important;
+      background: #E8F5E8 !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="mermaid">
+%%{init: { 'theme': 'base', 'flowchart': { 'rankSpacing': 60, 'nodeSpacing': 100 } }}%%
+flowchart TB
+  classDef cluster fill:#E6F7FF,stroke:#4A90E2,stroke-width:2px;
+
+  subgraph Prod-companyapp2
+    C1["<img src='kubernetes-logo.png' width='24'/><br/>Prod-companyapp2"]:::cluster
+    direction TB
+    C1 -->|Some Incident| P1["<img src='prometheus-logo-3.png' width='20'/><br/>Prometheus"]:::cluster
+    P1 -->|PromQL Alert \n team: companyapp2\n severity: critical| AM1["<img src='prometheus-logo-3.png' width='20'/><br/>Alert Manager"]:::cluster
+  end
+
+  subgraph Prod-companyapp1
+    C2["<img src='kubernetes-logo.png' width='24'/><br/>Prod-companyapp1"]:::cluster
+    direction TB
+    C2 -->|Some Incident| P2["<img src='prometheus-logo-3.png' width='20'/><br/>Prometheus"]:::cluster
+    P2 -->|PromQL Alert \n team: companyapp1\n severity: critical| AM2["<img src='prometheus-logo-3.png' width='20'/><br/>Alert Manager"]:::cluster
+  end
+
+  subgraph Prod-companyapp3
+    C3["<img src='kubernetes-logo.png' width='24'/><br/>Prod-companyapp3"]:::cluster
+    direction TB
+    C3 -->|Some Incident| P3["<img src='prometheus-logo-3.png' width='20'/><br/>Prometheus"]:::cluster
+    P3 -->|PromQL Alert \n team: companyapp3\n severity: critical| AM3["<img src='prometheus-logo-3.png' width='20'/><br/>Alert Manager"]:::cluster
+  end
+
+  subgraph SourceCluster [SourceCluster]
+    C4["<img src='kubernetes-logo.png' width='24' /><br/>SourceCluster"]:::cluster
+    direction TB
+    JC["<img src='json-config-logo.png' width='110'/><br/>     alertbot-config.json "]:::cluster
+    AB["<img src='BachehBot.jpeg' width='110'/><br/>     Alertbot-v2 API Deployment "]:::cluster
+    PS["<img src='Phone-sync-logo.png' width='110'/><br/>     Phone‑Sync API     "]:::cluster
+    KC["<img src='Keycloak-logo.png' width='110'/><br/>     Keycloak  Deployment   "]:::cluster
+    RD["<img src='redis-logo.png' width='110'/><br/>     Redis Cache     "]:::cluster
+  end
+  
+  %% Invisible nodes for better alignment
+  Prod-companyapp2 ~~~ SourceCluster
+  Prod-companyapp1 ~~~ SourceCluster  
+  Prod-companyapp3 ~~~ SourceCluster
+
+  AM1 -->|receiver: prod-companyapp2-critical-sre| AB
+  AM2 -->|receiver: prod-companyapp1-critical-sre-asset| AB
+  AM3 -->|receiver: prod-companyapp3-critical-sre| AB
+
+
+  AB  -->|0. find the keycloak group name for the receiver in config | JC
+  AB -->|1. API: get numbers for the given keycloak group| PS
+  PS -->|3. Lookup Keycloak Group| KC
+  KC -->|4. Return User Credentials and Numbers in Group| PS
+  PS -->|2. Use cache phones| RD
+  PS -->|5. response: numbers| AB
+
+  AB -->|6. send SMS using kavenegar| SMS["<img src='sms-logo.png' width='110'/><br/>     Kavenegar API     "]:::cluster
+  </div>
+</body>
+</html>

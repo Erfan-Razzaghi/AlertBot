@@ -1,0 +1,1 @@
+from alertbot.alertbot_config_manager.alertbot_config_manager import ConfigManager

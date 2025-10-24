@@ -1,0 +1,24 @@
+{
+    "destinations": [
+        {
+            "subroute": "data-service-exception",
+            "keys": [
+                "search_name",
+                "results_link",
+                "app",
+                "result"
+            ],
+            "types": [
+                {
+                    "type": "telegram",
+                    "telegram_group_id": "-1002175055052"
+                },
+                {
+                    "type": "sms",
+                    "sender": "2000008700",
+                    "keycloak_group_name": "test-receiver2"
+                }
+            ]
+        }
+    ]
+}

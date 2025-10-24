@@ -1,0 +1,52 @@
+{
+    "destinations": [
+        {
+            "receiver": "test-telegram",
+            "severity": "warning",
+            "types": [
+                {
+                    "type": "telegram",
+                    "telegram_group_id": "-1002175055052"
+                },
+                {
+                    "type": "telegram",
+                    "telegram_group_id": "-1002175055052"
+                }
+            ]
+        },
+        {
+            "receiver": "test-telegram",
+            "severity": "critical",
+            "types": [
+                {
+                    "type": "telegram",
+                    "telegram_group_id": "-1002175055052",
+                    "silencer": true
+                }
+            ]
+        },
+        {
+            "receiver": "test-receiver3",
+            "severity": "critical",
+            "types": [
+                {
+                    "type": "sms",
+                    "sender": "2000008700",
+                    "keycloak_group_name": "test-receiver2"
+                }
+            ]
+        },
+        {
+            "receiver": "test-multi-topic",
+            "severity": "critical",
+            "types": [
+                {
+                    "type": "telegram",
+                    "telegram_group_id": "-1002747859362",
+                    "telegram_topic_id": "20",
+                    "silencer": false
+                }
+            ]
+        }
+    ]
+}
