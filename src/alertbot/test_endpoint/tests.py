@@ -29,7 +29,7 @@ async def test_sms_bulk():
         sms_sender = SMSHandler(api_key=env.KAVENEGAR_API_KEY)
         sms_sender.send_sms(
             sender="2000008700",
-            receptors=["09356388553", "09364226811"], 
+            receptors=["NUMBER1", "NUMBER2"], 
             message="Hello World From Alertbot Bulk",
             cluster="test"
         )

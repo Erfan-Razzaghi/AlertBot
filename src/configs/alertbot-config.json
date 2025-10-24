@@ -6,11 +6,11 @@
             "types": [
                 {
                     "type": "telegram",
-                    "telegram_group_id": "-1002175055052"
+                    "telegram_group_id": "-GROUP_ID"
                 },
                 {
                     "type": "telegram",
-                    "telegram_group_id": "-1002175055052"
+                    "telegram_group_id": "-GROUP_ID"
                 }
             ]
         },
@@ -20,7 +20,7 @@
             "types": [
                 {
                     "type": "telegram",
-                    "telegram_group_id": "-1002175055052",
+                    "telegram_group_id": "-GROUP_ID",
                     "silencer": true
                 }
             ]
@@ -31,7 +31,7 @@
             "types": [
                 {
                     "type": "sms",
-                    "sender": "2000008700",
+                    "sender": "RECEIVER",
                     "keycloak_group_name": "test-receiver2"
                 }
             ]
@@ -42,7 +42,7 @@
             "types": [
                 {
                     "type": "telegram",
-                    "telegram_group_id": "-1002747859362",
+                    "telegram_group_id": "-GROUP_ID",
                     "telegram_topic_id": "20",
                     "silencer": false
                 }
